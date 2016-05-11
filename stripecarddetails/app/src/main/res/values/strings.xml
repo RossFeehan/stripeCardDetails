@@ -23,7 +23,7 @@
     <string name="invalidCardExpMonth">Please enter a valid card exp month</string>
     <string name="invalidCardExpYear">Please enter a valid card exp year</string>
     <string name="invalidCardCvv">Please enter a valid CVV number</string>
-    <string name="invalidCardDetails">Please enter valid card details</string>
+    <string name="invalidCardDetails">Dont forget to add your real Stripe api key</string>
     <string name="successfullySavedCardDetails">Thank you, your card details have been saved</string>
     <string name="somethingWrong">Sorry, something went wrong</string>
     <string name="cardAddedToStripe">Card successfully added to Stripe</string>

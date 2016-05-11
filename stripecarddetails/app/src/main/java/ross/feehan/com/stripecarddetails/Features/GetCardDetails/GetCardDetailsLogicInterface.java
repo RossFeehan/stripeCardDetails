@@ -3,4 +3,9 @@ package ross.feehan.com.stripecarddetails.Features.GetCardDetails; /*
  */
 
 public interface GetCardDetailsLogicInterface {
+
+    /**
+     * Get the users card details
+     */
+    void getCardDetails();
 }

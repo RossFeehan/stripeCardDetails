@@ -104,7 +104,7 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
 
         if (validStripeCard) {
             try {
-                Stripe stripe = new Stripe("pk_test_dTRy1FeKivlPmuYrzhNec11I");
+                Stripe stripe = new Stripe("YOUR STRIPE KEY HERE");
                 stripe.createToken(card, new TokenCallback() {
                     @Override
                     public void onError(Exception error) {
