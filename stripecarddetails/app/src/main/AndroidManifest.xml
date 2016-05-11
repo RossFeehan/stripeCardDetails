@@ -10,8 +10,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Features.AddCardDetails.StripeAddCardDetailsActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:label="@string/addCard"
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,4 +1,19 @@
 <resources>
     <string name="app_name">stripe card details</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="addCard">Add Card</string>
+    <string name="enterCardDetails">Enter your card details</string>
+    <string name="cardType">Card Type</string>
+    <string name="cardHolderName">CARD HOLDER\'S NAME</string>
+    <string name="cardNumberHeader">CARD NUMBER</string>
+    <string name="cardHolderNameLowerCase">Card Holder\'s Name</string>
+    <string name="cardNumberHeaderLowerCase">Card Number</string>
+    <string name="cardNumber">XXXX XXXX</string>
+    <string name="month">MM</string>
+    <string name="slash">\/</string>
+    <string name="year">YY</string>
+    <string name="cvv">CVV</string>
+    <string name="save">SAVE</string>
 </resources>
