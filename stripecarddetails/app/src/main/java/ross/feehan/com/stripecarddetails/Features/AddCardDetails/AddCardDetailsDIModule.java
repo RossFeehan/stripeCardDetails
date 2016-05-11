@@ -10,7 +10,7 @@ import ross.feehan.com.stripecarddetails.Shared.ApiService;
 import ross.feehan.com.stripecarddetails.Shared.MessageFactory;
 import ross.feehan.com.stripecarddetails.Shared.ValidateChecks;
 
-@Module(injects = StripeAddCardDetailsActivity.class, complete = false)
+@Module(injects = AddCardDetailsActivity.class, complete = false)
 public class AddCardDetailsDIModule {
 
     private AddCardDetailsViewInterface view;

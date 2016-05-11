@@ -2,10 +2,12 @@ package ross.feehan.com.stripecarddetails.Features.AddCardDetails;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,7 +21,7 @@ import butterknife.OnClick;
 import ross.feehan.com.stripecarddetails.R;
 import ross.feehan.com.stripecarddetails.Shared.StripeCardDetailsApplication;
 
-public class StripeAddCardDetailsActivity extends AppCompatActivity implements AddCardDetailsViewInterface{
+public class AddCardDetailsActivity extends AppCompatActivity implements AddCardDetailsViewInterface{
 
     @Inject AddCardDetailsLogicInterface logic;
 
@@ -55,6 +57,10 @@ public class StripeAddCardDetailsActivity extends AppCompatActivity implements A
 
     private void setUpToolbar() {
         setSupportActionBar(toolbar);
+        final ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     //set a text watcher on the card number edit text
@@ -116,5 +122,18 @@ public class StripeAddCardDetailsActivity extends AppCompatActivity implements A
     @Override
     public void displayToast(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
+    }
+
+    //ACTIVITY LIFECYCLE METHODS
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown menu item passed");
+        }
+        return true;
     }
 }

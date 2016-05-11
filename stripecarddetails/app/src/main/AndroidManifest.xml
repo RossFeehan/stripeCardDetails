@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Features.AddCardDetails.StripeAddCardDetailsActivity"
-            android:label="@string/addCard"
+            android:name=".Features.GetCardDetails.GetCardDetailsActivity"
+            android:label="@string/cardDetails"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,6 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".Features.AddCardDetails.AddCardDetailsActivity"
+            android:label="@string/addCard"
+            android:parentActivityName=".Features.GetCardDetails.GetCardDetailsActivity"
+            android:theme="@style/AppTheme"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Features.GetCardDetails.GetCardDetailsActivity"/>
+        </activity>
+
     </application>
 
 </manifest>

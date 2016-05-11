@@ -32,4 +32,5 @@
 
     <!--CARD DETAILS UI -->
     <string name="fullName">Full Name</string>
+    <string name="cardDetails">Card Details</string>
 </resources>
