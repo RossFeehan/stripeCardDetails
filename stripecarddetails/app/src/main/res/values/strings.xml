@@ -28,4 +28,5 @@
     <string name="somethingWrong">Sorry, something went wrong</string>
     <string name="cardAddedToStripe">Card successfully added to Stripe</string>
     <string name="cardNotAddedToStripe">Card unsuccessfully added to Stripe</string>
+    <string name="noInternetConnection">Dont forget to add your real api</string>
 </resources>

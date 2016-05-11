@@ -25,5 +25,5 @@ public interface AddCardDetailsViewInterface {
      * Called when the card has successfully been saved
      * @param message
      */
-    void displayMessageAndCloseScreen(String message);
+    void displayToast(String message);
 }

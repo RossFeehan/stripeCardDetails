@@ -119,8 +119,7 @@ public class StripeAddCardDetailsActivity extends AppCompatActivity implements A
     }
 
     @Override
-    public void displayMessageAndCloseScreen(String message) {
+    public void displayToast(String message) {
         Toast.makeText(getApplication(), message, Toast.LENGTH_LONG).show();
-        finish();
     }
 }

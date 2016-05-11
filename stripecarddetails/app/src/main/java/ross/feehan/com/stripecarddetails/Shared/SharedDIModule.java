@@ -27,4 +27,10 @@ public class SharedDIModule {
     public MessageFactory provideMessageFactory(){
         return new MessageFactory(ctx);
     }
+
+    @Provides @Singleton
+    public ApiService provideApiService() {
+        RetrofitSetup retrofitSetup = new RetrofitSetup();
+        return retrofitSetup.getService();
+    }
 }

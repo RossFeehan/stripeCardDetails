@@ -49,7 +49,7 @@ public class AddCardDetailsLogicImplTest {
 
     @Before
     public void setup(){
-        logic = new AddCardDetailsLogicImpl(view,  messageFactory, validateChecks);
+        logic = new AddCardDetailsLogicImpl(view, data, messageFactory, validateChecks);
         mockResponse();
     }
 
@@ -178,4 +178,13 @@ public class AddCardDetailsLogicImplTest {
         //THEN
         verify(view).displayMessage(messageFactory.invalidCardCvv());
     }
+
+    //TESTING BACKEND CONNECTION
+    //SCENARIO - SUCCESSFULLY ADD CARD TO OUR BACKEND
+
+    //SCENARIO -- ERROR WHILE ADD CARD TO OUR BACKEND
+
+    //SCENARIO -- EXCEPTION ERROR WHILE ADD CARD TO BACKEND
+
+    //SCENARIO -- NETWORK ERROR WHILE ADD CARD TO BACKEND
 }

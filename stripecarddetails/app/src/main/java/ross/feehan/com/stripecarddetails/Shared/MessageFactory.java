@@ -32,4 +32,10 @@ public class MessageFactory {
     public String cardAddedToStripe(){return ctx.getString(R.string.cardAddedToStripe);}
 
     public String cardNotAddedToStripe(){return ctx.getString(R.string.cardNotAddedToStripe);}
+
+    public String somethingWentWrongError(){return ctx.getString(R.string.somethingWrong);}
+
+    public String noInternetConnection() {
+        return ctx.getString(R.string.noInternetConnection);
+    }
 }

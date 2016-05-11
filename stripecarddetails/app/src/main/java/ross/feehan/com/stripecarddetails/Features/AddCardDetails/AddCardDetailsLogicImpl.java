@@ -2,6 +2,7 @@ package ross.feehan.com.stripecarddetails.Features.AddCardDetails; /*
  * Created by Ross Feehan on 11/05/2016.
  */
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.stripe.android.Stripe;
@@ -10,19 +11,22 @@ import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
 import com.stripe.exception.AuthenticationException;
 
+import ross.feehan.com.stripecarddetails.DataTypes.SuccessOrErrorResponse;
 import ross.feehan.com.stripecarddetails.Shared.MessageFactory;
 import ross.feehan.com.stripecarddetails.Shared.ValidateChecks;
 
 public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
 
     private AddCardDetailsViewInterface view;
+    private AddCardDetailsDataInterface data;
     private MessageFactory messageFactory;
     private ValidateChecks validateChecks;
 
     //CONSTRUCTOR
-    public AddCardDetailsLogicImpl(AddCardDetailsViewInterface view,
+    public AddCardDetailsLogicImpl(AddCardDetailsViewInterface view, AddCardDetailsDataInterface data,
                                    MessageFactory messageFactory, ValidateChecks validateChecks){
         this.view = view;
+        this.data = data;
         this.messageFactory = messageFactory;
         this.validateChecks = validateChecks;
     }
@@ -52,8 +56,10 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
 
     @Override
     public void receiveCardDetails(String cardholderName, String cardNumber, String expMonth, String expYear, String cvv) {
+
         boolean validCardDetails = true;
 
+        //CHECK THAT ALL THE USER INPUT DATA IS CORRECT BEFORE SENDING CARD DETAILS TO STRIPE
         if(!validateChecks.validString(cvv)){
             validCardDetails = false;
             view.displayMessage(messageFactory.invalidCardCvv());
@@ -108,11 +114,11 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
 
                     @Override
                     public void onSuccess(Token token) {
-                        //TODO SEND THE CARD DETAILS TO OUR BACKEND HERE SO THE USER CAN BE SAVED AND
-                        //THESE CARD DETAILS CAN BE USED OVER AND OVER
-                        saveStripeTokenToBackend(token);
-                        view.displayMessage(messageFactory.cardAddedToStripe());
+                        view.displayToast(messageFactory.cardAddedToStripe());
                         Log.i("STRIPE", token.toString());
+
+                        saveStripeTokenToBackend(token);
+
                     }
                 });
             } catch (AuthenticationException e) {
@@ -122,8 +128,28 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
         }
     }
 
-
+    //Adds the stripe token to our backend so the users card can be used over and over
     private void saveStripeTokenToBackend(Token token) {
+        data.addCardDetails(token.getId(), new AddCardDetailsDataInterface.Callback<SuccessOrErrorResponse>() {
+            @Override
+            public void onResponse(@NonNull SuccessOrErrorResponse response) {
+                if(response.getSuccess() != null){
+                    view.displayToast(response.getSuccess().get(0));
+                }
+                else{
+                    view.displayMessage(response.getError().get(0));
+                }
+            }
 
+            @Override
+            public void onFailure() {
+                view.displayMessage(messageFactory.somethingWentWrongError());
+            }
+
+            @Override
+            public void onNoNetworkFailure() {
+                view.displayMessage(messageFactory.noInternetConnection());
+            }
+        });
     }
 }

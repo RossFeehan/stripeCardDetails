@@ -6,6 +6,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import ross.feehan.com.stripecarddetails.Shared.ApiService;
 import ross.feehan.com.stripecarddetails.Shared.MessageFactory;
 import ross.feehan.com.stripecarddetails.Shared.ValidateChecks;
 
@@ -20,7 +21,12 @@ public class AddCardDetailsDIModule {
     }
 
     @Provides @Singleton
-    public AddCardDetailsLogicInterface provideAddCardDetailsLogicInterface(MessageFactory messageFactory, ValidateChecks validateChecks){
-        return new AddCardDetailsLogicImpl(view, messageFactory, validateChecks);
+    public AddCardDetailsDataInterface provideAddCardDetailsDataInterface(ApiService apiService){
+        return new AddCardDetailsDataImpl(apiService);
+    }
+
+    @Provides @Singleton
+    public AddCardDetailsLogicInterface provideAddCardDetailsLogicInterface(AddCardDetailsDataInterface data, MessageFactory messageFactory, ValidateChecks validateChecks){
+        return new AddCardDetailsLogicImpl(view, data, messageFactory, validateChecks);
     }
 }
