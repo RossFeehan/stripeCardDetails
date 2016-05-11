@@ -2,7 +2,7 @@
     <string name="app_name">stripe card details</string>
     <string name="action_settings">Settings</string>
 
-
+    <!--ADD CARD UI-->
     <string name="addCard">Add Card</string>
     <string name="enterCardDetails">Enter your card details</string>
     <string name="cardType">Card Type</string>
@@ -16,4 +16,13 @@
     <string name="year">YY</string>
     <string name="cvv">CVV</string>
     <string name="save">SAVE</string>
+
+    <!--ADD CARD MESSAGES-->
+    <string name="invalidCardholderName">Please enter a valid name</string>
+    <string name="invalidCardNumber">Please enter a valid card number</string>
+    <string name="invalidCardExpMonth">Please enter a valid card exp month</string>
+    <string name="invalidCardExpYear">Please enter a valid card exp year</string>
+    <string name="invalidCardCvv">Please enter a valid CVV number</string>
+    <string name="invalidCardDetails">Please enter valid card details</string>
+    <string name="successfullySavedCardDetails">Thank you, your card details have been saved</string>
 </resources>

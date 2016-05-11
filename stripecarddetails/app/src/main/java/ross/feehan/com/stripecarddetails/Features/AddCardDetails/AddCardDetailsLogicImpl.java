@@ -46,6 +46,31 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
 
     @Override
     public void receiveCardDetails(String cardholderName, String cardNumber, String expMonth, String expYear, String cvv) {
+        boolean validCardDetails = true;
 
+        if(!validateChecks.validString(cvv)){
+            validCardDetails = false;
+            view.displayMessage(messageFactory.invalidCardCvv());
+        }
+        if(!validateChecks.validString(expYear)){
+            validCardDetails = false;
+            view.displayMessage(messageFactory.invalidCardExpYear());
+        }
+        if(!validateChecks.validString(expMonth)){
+            validCardDetails = false;
+            view.displayMessage(messageFactory.invalidCardExpMonth());
+        }
+        if(!validateChecks.validString(cardNumber)){
+            validCardDetails = false;
+            view.displayMessage(messageFactory.invalidCardNumber());
+        }
+        if(!validateChecks.validString(cardholderName)){
+            validCardDetails = false;
+            view.displayMessage(messageFactory.invalidCardholderName());
+        }
+
+        if(validCardDetails){
+            //TODO GET TOKEN FROM STRIPE HERE
+        }
     }
 }
