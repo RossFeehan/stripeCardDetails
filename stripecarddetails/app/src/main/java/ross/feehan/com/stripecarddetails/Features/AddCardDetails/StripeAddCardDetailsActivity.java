@@ -91,7 +91,7 @@ public class StripeAddCardDetailsActivity extends AppCompatActivity implements A
 
     @OnClick(R.id.saveBtn)
     void onSaveButtonLayoutClicked(){
-        //TODO NOTIFY LOGIC THAT SAVE BUTTON CLICKED
+        logic.onSaveButtonClicked();
     }
 
     //INTERFACE METHODS
@@ -110,7 +110,7 @@ public class StripeAddCardDetailsActivity extends AppCompatActivity implements A
         String cardExpYear = cardExpYearET.getText().toString();
         String cardCVV = cardCvvNumberET.getText().toString();
 
-        //TODO SEND CARD DETAILS TO LOGIC HERE
+        logic.receiveCardDetails(cardHolderName, cardNumber, cardExpMonth, cardExpYear, cardCVV);
     }
 
     @Override
