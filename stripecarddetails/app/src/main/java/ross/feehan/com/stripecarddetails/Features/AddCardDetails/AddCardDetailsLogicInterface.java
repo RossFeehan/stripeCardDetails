@@ -1,4 +1,4 @@
-package ross.feehan.com.stripecarddetails.AddCardDetails; /*
+package ross.feehan.com.stripecarddetails.Features.AddCardDetails; /*
  * Created by Ross Feehan on 11/05/2016.
  */
 

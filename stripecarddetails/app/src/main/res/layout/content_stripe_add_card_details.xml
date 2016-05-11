@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".AddCardDetails.StripeAddCardDetailsActivity"
+    tools:context=".Features.AddCardDetails.StripeAddCardDetailsActivity"
     tools:showIn="@layout/stripe_add_card_details_layout">
 
     <TextView
