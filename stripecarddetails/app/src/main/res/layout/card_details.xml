@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:background="@color/cardViewColour"
+        android:layout_marginRight="8dp"
+        card_view:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!--Card Type-->
+            <RelativeLayout
+                android:id="@+id/cardTypeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:paddingTop="20dp"
+                android:paddingLeft="10dp"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:id="@+id/cardTypeHeaderTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cardType"
+                    android:textColor="@android:color/white"
+                    android:textSize="18dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/cardDetailsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardTypeLayout"
+                android:paddingTop="20dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp">
+
+                <!--Name-->
+                <TextView
+                    android:id="@+id/cardHolderNameHeaderTV"
+                    style="@style/smallText"
+                    android:text="@string/cardHolderName"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginRight="15dp"/>
+
+                <TextView
+                    android:id="@+id/cardHolderNameTV"
+                    style="@style/cardDetailsText"
+                    android:layout_below="@id/cardHolderNameHeaderTV"
+                    android:text="@string/fullName"
+                    android:layout_marginRight="10dp"/>
+
+                <!--Card Number -->
+                <TextView
+                    android:id="@+id/cardNumberHeaderTV"
+                    style="@style/smallText"
+                    android:text="@string/cardNumberHeader"
+                    android:layout_toRightOf="@id/cardHolderNameHeaderTV"
+                    android:layout_marginBottom="6dp"/>
+
+                <TextView
+                    android:id="@+id/cardNumbersTV"
+                    style="@style/cardDetailsText"
+                    android:layout_below="@id/cardNumberHeaderTV"
+                    android:layout_toRightOf="@id/cardHolderNameTV"
+                    android:text="@string/cardNumber"
+                    android:layout_marginBottom="6dp"/>
+
+                <!--EXP DATE-->
+                <TextView
+                    android:id="@+id/cardExpMonthTV"
+                    style="@style/smallText"
+                    android:text="@string/month"
+                    android:layout_below="@id/cardNumbersTV"
+                    android:layout_toRightOf="@id/cardHolderNameTV"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginRight="2dp"/>
+
+                <TextView
+                    android:id="@+id/cardExpSlashTV"
+                    style="@style/smallText"
+                    android:text="@string/slash"
+                    android:layout_below="@id/cardNumbersTV"
+                    android:layout_toRightOf="@id/cardExpMonthTV"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginRight="2dp"/>
+
+                <TextView
+                    android:id="@+id/cardExpYearTV"
+                    style="@style/smallText"
+                    android:text="@string/year"
+                    android:layout_below="@id/cardNumbersTV"
+                    android:layout_toRightOf="@id/cardExpSlashTV"
+                    android:layout_marginBottom="6dp"/>
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <!--Edit user details FAB -->
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/addCardDetailsFAB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        app:elevation="4dp"
+        android:src="@drawable/edit_icon"/>
+
+</RelativeLayout>

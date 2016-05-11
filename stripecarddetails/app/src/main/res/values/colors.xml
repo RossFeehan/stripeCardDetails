@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="editTextHint">#999999</color>
     <color name="cardViewColour">#FAFAFA</color>
+    <color name="smallText">#727272</color>
+    <color name="greyRectangle">#e0e0e0</color>
 </resources>
