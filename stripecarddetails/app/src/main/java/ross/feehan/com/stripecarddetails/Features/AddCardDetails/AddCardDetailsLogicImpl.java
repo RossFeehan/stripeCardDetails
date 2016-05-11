@@ -41,7 +41,7 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
 
     @Override
     public void onSaveButtonClicked() {
-
+        view.getCardDetails();
     }
 
     @Override

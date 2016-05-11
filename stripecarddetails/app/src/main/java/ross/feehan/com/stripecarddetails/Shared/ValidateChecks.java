@@ -3,4 +3,13 @@ package ross.feehan.com.stripecarddetails.Shared; /*
  */
 
 public class ValidateChecks {
+
+    public boolean validString(String stringToTest) {
+        if(stringToTest == null || stringToTest.isEmpty() || stringToTest.equals(" ")){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 }

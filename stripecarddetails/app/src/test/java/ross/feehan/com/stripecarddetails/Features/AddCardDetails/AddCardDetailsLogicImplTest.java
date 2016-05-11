@@ -112,4 +112,13 @@ public class AddCardDetailsLogicImplTest {
         verify(view).displayCardType(AddCardDetailsLogicInterface.UNKNOWN_CARD);
     }
 
+    //SCENARIO -- WHEN SAVE BUTTON IS CLICKED, GET ENTERED CARD DETAILS FROM VIEW
+    @Test
+    public void when_saveButtonIsClicked_then_getEnteredCardDetailsFromView(){
+        //WHEN
+        logic.onSaveButtonClicked();
+        //THEN
+        verify(view).getCardDetails();
+    }
+
 }
