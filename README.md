@@ -1,1 +1,2 @@
 # stripeCardDetails
+A Library for adding a users card details to Stripe. When card details are added successfully to stripe the stripe token is then saved to your own backend so the users card details can be used over and over. Interface methods for getting card details and displaying them will have to be implemented. User will have to enter a correct Stripe api key and api url for saving stripe token to a backend.
