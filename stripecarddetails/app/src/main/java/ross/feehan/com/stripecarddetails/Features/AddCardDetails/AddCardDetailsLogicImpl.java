@@ -118,7 +118,6 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
                         Log.i("STRIPE", token.toString());
 
                         saveStripeTokenToBackend(token);
-
                     }
                 });
             } catch (AuthenticationException e) {
@@ -129,7 +128,7 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
     }
 
     //Adds the stripe token to our backend so the users card can be used over and over
-    private void saveStripeTokenToBackend(Token token) {
+    public void saveStripeTokenToBackend(Token token) {
         data.addCardDetails(token.getId(), new AddCardDetailsDataInterface.Callback<SuccessOrErrorResponse>() {
             @Override
             public void onResponse(@NonNull SuccessOrErrorResponse response) {
