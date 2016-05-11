@@ -16,12 +16,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ross.feehan.com.stripecarddetails.R;
+import ross.feehan.com.stripecarddetails.Shared.StripeCardDetailsApplication;
 
 public class StripeAddCardDetailsActivity extends AppCompatActivity implements AddCardDetailsViewInterface{
+
+    @Inject AddCardDetailsLogicInterface logic;
 
     @Bind(R.id.rootView) ViewGroup rootView;
     @Bind(R.id.toolbar) Toolbar toolbar;
@@ -38,7 +43,12 @@ public class StripeAddCardDetailsActivity extends AppCompatActivity implements A
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initDependencies();
         setupUI();
+    }
+
+    private void initDependencies() {
+        ((StripeCardDetailsApplication) getApplication()).getObjectGraph().plus(new AddCardDetailsDIModule(this)).inject(this);
     }
 
     private void setupUI() {
@@ -71,7 +81,7 @@ public class StripeAddCardDetailsActivity extends AppCompatActivity implements A
             public void afterTextChanged(Editable s) {
                 if(!gotCardType){
                     if(s.length() > 0){
-                        //TODO GET CARD TYPE HERE FROM LOGIC
+                        logic.getCardType(Integer.parseInt(cardNumberET.getText().toString()));
                     }
                 }
             }

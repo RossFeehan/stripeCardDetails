@@ -25,4 +25,7 @@
     <string name="invalidCardCvv">Please enter a valid CVV number</string>
     <string name="invalidCardDetails">Please enter valid card details</string>
     <string name="successfullySavedCardDetails">Thank you, your card details have been saved</string>
+    <string name="somethingWrong">Sorry, something went wrong</string>
+    <string name="cardAddedToStripe">Card successfully added to Stripe</string>
+    <string name="cardNotAddedToStripe">Card unsuccessfully added to Stripe</string>
 </resources>

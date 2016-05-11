@@ -2,21 +2,27 @@ package ross.feehan.com.stripecarddetails.Features.AddCardDetails; /*
  * Created by Ross Feehan on 11/05/2016.
  */
 
+import android.util.Log;
+
+import com.stripe.android.Stripe;
+import com.stripe.android.TokenCallback;
+import com.stripe.android.model.Card;
+import com.stripe.android.model.Token;
+import com.stripe.exception.AuthenticationException;
+
 import ross.feehan.com.stripecarddetails.Shared.MessageFactory;
 import ross.feehan.com.stripecarddetails.Shared.ValidateChecks;
 
 public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
 
     private AddCardDetailsViewInterface view;
-    private AddCardDetailsDataInterface data;
     private MessageFactory messageFactory;
     private ValidateChecks validateChecks;
 
     //CONSTRUCTOR
-    public AddCardDetailsLogicImpl(AddCardDetailsViewInterface view, AddCardDetailsDataInterface data,
+    public AddCardDetailsLogicImpl(AddCardDetailsViewInterface view,
                                    MessageFactory messageFactory, ValidateChecks validateChecks){
         this.view = view;
-        this.data = data;
         this.messageFactory = messageFactory;
         this.validateChecks = validateChecks;
     }
@@ -70,7 +76,54 @@ public class AddCardDetailsLogicImpl implements AddCardDetailsLogicInterface{
         }
 
         if(validCardDetails){
-            //TODO GET TOKEN FROM STRIPE HERE
+            addCardToStripe(cardholderName, cardNumber, expMonth, expYear, cvv);
         }
+    }
+
+    //CLASS METHODS
+    //Send the card details to stripe and receive a valid stripe token back,
+    //this stripe token is sent to the backend to be saved
+    private void addCardToStripe(String cardholderName, String cardNumber, String expMonth, String expYear, String cvv) {
+        boolean validStripeCard = true;
+        Card card = new Card(cardNumber, Integer.parseInt(expMonth), Integer.parseInt(expYear), cvv, cardholderName, null, null, null, null, null, null, null, null, null, null);
+
+        if (!card.validateCVC()) {
+            validStripeCard = false;
+            view.displayMessage(messageFactory.invalidCardCvv());
+        }
+        if (!card.validateCard()) {
+            validStripeCard = false;
+            view.displayMessage(messageFactory.invalidCardDetails());
+        }
+
+        if (validStripeCard) {
+            try {
+                Stripe stripe = new Stripe("pk_test_dTRy1FeKivlPmuYrzhNec11I");
+                stripe.createToken(card, new TokenCallback() {
+                    @Override
+                    public void onError(Exception error) {
+                        view.displayMessage(messageFactory.invalidCardDetails());
+                        Log.i("STRIPE", "FAILURE");
+                    }
+
+                    @Override
+                    public void onSuccess(Token token) {
+                        //TODO SEND THE CARD DETAILS TO OUR BACKEND HERE SO THE USER CAN BE SAVED AND
+                        //THESE CARD DETAILS CAN BE USED OVER AND OVER
+                        saveStripeTokenToBackend(token);
+                        view.displayMessage(messageFactory.cardAddedToStripe());
+                        Log.i("STRIPE", token.toString());
+                    }
+                });
+            } catch (AuthenticationException e) {
+                e.printStackTrace();
+                view.displayMessage(messageFactory.cardNotAddedToStripe());
+            }
+        }
+    }
+
+
+    private void saveStripeTokenToBackend(Token token) {
+
     }
 }

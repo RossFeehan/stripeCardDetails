@@ -49,7 +49,7 @@ public class AddCardDetailsLogicImplTest {
 
     @Before
     public void setup(){
-        logic = new AddCardDetailsLogicImpl(view, data, messageFactory, validateChecks);
+        logic = new AddCardDetailsLogicImpl(view,  messageFactory, validateChecks);
         mockResponse();
     }
 

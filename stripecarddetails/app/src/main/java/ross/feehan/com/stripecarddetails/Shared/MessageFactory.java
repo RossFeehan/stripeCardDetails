@@ -10,6 +10,7 @@ public class MessageFactory {
 
     private Context ctx;
 
+    //CONSTRUCTOR
     public MessageFactory(Context ctx) {
         this.ctx = ctx;
     }
@@ -27,4 +28,8 @@ public class MessageFactory {
     public String invalidCardDetails(){return ctx.getString(R.string.invalidCardDetails);}
 
     public String successfullySavedCardDetails(){return ctx.getString(R.string.successfullySavedCardDetails);}
+
+    public String cardAddedToStripe(){return ctx.getString(R.string.cardAddedToStripe);}
+
+    public String cardNotAddedToStripe(){return ctx.getString(R.string.cardNotAddedToStripe);}
 }
